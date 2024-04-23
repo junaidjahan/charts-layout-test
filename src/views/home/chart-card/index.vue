@@ -32,9 +32,6 @@ const chartTypes: any = {
             <h2 class="heading">
                 {{ title }}
             </h2>
-            <h3 class="subheading">
-                {{ subtitle }}
-            </h3>
             <div class="date-posted mt-5">
                 {{ lastRefreshed }}
             </div>
