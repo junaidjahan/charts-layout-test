@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { BaseCard } from "@/components/base";
 // @ts-ignore  
-import type { DynamicChart } from '@/types/chart.types'
+import type { DynamicChart, Series } from '@/types/chart.types'
 import { LineChart, BarChart, CandleStickChart } from "@/components/charts"
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
     title: string,
     description: string,
     lastRefreshed: string,
-    series: DynamicChart
+    series: Array<Series>
 }
 
 defineProps<Props>()
