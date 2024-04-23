@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { BaseCard } from "@/components/base";
 // @ts-ignore  
-import type { DynamicChart } from '@/typings/chart.types.ts'
+import type { DynamicChart } from '@/types/chart.types'
 import { LineChart, BarChart, CandleStickChart } from "@/components/charts"
 
 interface Props {
