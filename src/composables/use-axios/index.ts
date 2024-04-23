@@ -1,7 +1,7 @@
 import { serializeQuery } from '@/global'
 import axios, { AxiosError, type AxiosRequestConfig, type AxiosResponse, type Method } from 'axios'
 
-export const useAxios = (baseUrl: string) => {
+export const useAxios = (baseUrl?: string) => {
   const request = (method: Method) => {
     return async <
       T = unknown,

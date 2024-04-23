@@ -1,30 +1,45 @@
 <script setup lang="ts">
-import { BaseCard } from "@/components/base"
+import { BaseCard } from "@/components/base";
+import type { DynamicChart } from '@/typings/chart.types'
+import { LineChart, BarChart, CandleStickChart } from "@/components/charts"
+
+interface Props {
+    chartType: string,
+    title: string,
+    subtitle: string,
+    description: string,
+    lastRefreshed: string,
+    series: DynamicChart
+}
+
+defineProps<Props>()
+
+const chartTypes: any = {
+    LineChart,
+    BarChart,
+    CandleStickChart
+}
+
 </script>
 
 <template>
     <BaseCard class="chart-card">
         <div class="chart">
-            This is for chart
+            <component :is="chartTypes[chartType]" :series="series" />
         </div>
         <hr>
         <div class="info">
             <h2 class="heading">
-                Hello
+                {{ title }}
             </h2>
             <h3 class="subheading">
-                World
+                {{ subtitle }}
             </h3>
             <div class="date-posted mt-5">
-                Hello
+                {{ lastRefreshed }}
             </div>
             <p class="mt-5 description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam accusamus quidem vero asperiores eos
-                ratione expedita hic veritatis illum beatae aliquid a, similique itaque voluptate est rem doloremque
-                reiciendis laudantium!
-                Vel velit esse officia a dolor aspernatur. Quos aliquid perferendis soluta suscipit, amet ipsa totam
-                rerum iusto, debitis repudiandae nihil odit maiores quidem hic velit? Aperiam repudiandae eligendi
-                libero culpa.
+                {{ description }}
             </p>
         </div>
 
