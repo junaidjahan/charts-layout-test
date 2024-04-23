@@ -25,6 +25,10 @@
    ```
 6. Application served at http://localhost:5173
 
+## Demo
+
+https://charts-layout-test-junaid-jahan.netlify.app/
+
 ## Tech stack
 
 - [Vue](https://vuejs.org/)
