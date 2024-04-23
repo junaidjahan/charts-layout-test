@@ -1,5 +1,5 @@
 import { useChartService } from '@/services'
-import type { Chart, DynamicChart } from '@/typings/chart.types'
+import type { Chart, DynamicChart } from '@/types/chart.types'
 import { computed, ref, type Ref } from 'vue'
 
 export const useHome = () => {

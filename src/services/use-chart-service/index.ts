@@ -1,5 +1,5 @@
 import { useAxios } from '@/composables'
-import type { Chart } from '@/typings/chart.types'
+import type { Chart } from '@/types/chart.types'
 
 export const useChartService = () => {
   const apiUrl = import.meta.env.VITE_APP_API_URL

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // @ts-ignore  
-import type { Series } from '@/typings/chart.types'
+import type { Series } from '@/types/chart.types'
 
 interface Props {
     series: Array<Series>

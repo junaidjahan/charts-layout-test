@@ -88,4 +88,4 @@ const chartTypes: any = {
     }
 
 }
-</style>
+</style>@/types/chart.types
