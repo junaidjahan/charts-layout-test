@@ -1,0 +1,81 @@
+@for $i from 1 through 96 {
+  .w-#{$i} {
+    width: $i * 4px; // 1 represents 4 pixels
+  }
+}
+
+@each $mr, $ps in ('t': 'top', 'b': 'bottom', 'r': 'right', 'l': 'left') {
+  $mar: 0;
+  @while $mar<=100 {
+    .m#{$mr}-#{$mar} {
+      margin-#{$ps}: $mar * 1px !important;
+    }
+
+    $mar: $mar + 1;
+  }
+}
+
+@each $pa, $ps in ('t': 'top', 'b': 'bottom', 'r': 'right', 'l': 'left') {
+  $pad: 0;
+  @while $pad<=100 {
+    .p#{$pa}-#{$pad} {
+      padding-#{$ps}: $pad * 1px !important;
+    }
+
+    $pad: $pad + 1;
+  }
+}
+
+$flexValues: (
+  'flex': (
+    '': flex,
+    '-row': row,
+    '-row-reverse': row-reverse,
+    '-column': column,
+    '-column-reverse': column-reverse
+  ),
+  'justify-content': (
+    '-center': center,
+    '-start': flex-start,
+    '-end': flex-end,
+    '-between': space-between,
+    '-around': space-around,
+    '-evenly': space-evenly
+  ),
+  'items': (
+    '-center': center,
+    '-start': flex-start,
+    '-end': flex-end,
+    '-baseline': baseline,
+    '-stretch': stretch
+  ),
+  'wrap': (
+    '-nowrap': nowrap,
+    '-wrap': wrap,
+    '-wrap-reverse': wrap-reverse
+  )
+);
+
+@each $property, $values in $flexValues {
+  @each $valueKey, $valueValue in $values {
+    .#{$property}#{$valueKey} {
+      @if $property == 'flex' {
+        display: $valueValue;
+      } @else if $property == 'wrap' {
+        flex-wrap: $valueValue;
+      } @else {
+        #{$property}: $valueValue;
+      }
+    }
+  }
+}
+
+@for $i from 1 through 96 {
+  .w-#{$i} {
+    width: $i * 4px; // 1 represents 4 pixels
+  }
+}
+
+.w-100x {
+  width: 100%;
+}
