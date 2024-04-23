@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-ignore  
 import { Series } from "@/typings/chart.type.ts"
 
 interface Props {

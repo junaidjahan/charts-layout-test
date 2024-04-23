@@ -4,7 +4,7 @@ import ChartCard from "./chart-card/index.vue"
 import { useHome } from "./use-home"
 import { onMounted } from "vue";
 
-const { fetchChartsData, plotChart } = useHome()
+const { fetchChartsData, plotChart, search } = useHome()
 
 onMounted(async () => {
   fetchChartsData()
@@ -13,12 +13,12 @@ onMounted(async () => {
 
 <template>
   <div class="main-container">
-    <Navbar />
+    <Navbar v-model="search" />
     <section>
       <div class="grid mt-30">
         <div v-for="(chart, index) in plotChart" :key="index">
           <ChartCard :chart-type="chart.chartType" :description="chart?.description" :series="chart?.series"
-            title="Hello" subtitle="World" last-refreshed="Today" />
+            :title="chart?.title" :last-refreshed="chart?.lastRefreshed" />
         </div>
       </div>
     </section>
