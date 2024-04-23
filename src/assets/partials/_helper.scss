@@ -26,20 +26,56 @@
   }
 }
 
-.shadow-smooth {
-  .v-card {
-    box-shadow:
-      0px 0.3px 1.8px -7px rgba(0, 0, 0, 0.02),
-      0px 0.8px 4.3px -7px rgba(0, 0, 0, 0.028),
-      0px 1.5px 8.1px -7px rgba(0, 0, 0, 0.035),
-      0px 2.7px 14.5px -7px rgba(0, 0, 0, 0.042),
-      0px 5px 27.2px -7px rgba(0, 0, 0, 0.05),
-      0px 12px 65px -7px rgba(0, 0, 0, 0.07);
+$flexValues: (
+  'flex': (
+    '': flex,
+    '-row': row,
+    '-row-reverse': row-reverse,
+    '-column': column,
+    '-column-reverse': column-reverse
+  ),
+  'justify-content': (
+    '-center': center,
+    '-start': flex-start,
+    '-end': flex-end,
+    '-between': space-between,
+    '-around': space-around,
+    '-evenly': space-evenly
+  ),
+  'items': (
+    '-center': center,
+    '-start': flex-start,
+    '-end': flex-end,
+    '-baseline': baseline,
+    '-stretch': stretch
+  ),
+  'wrap': (
+    '-nowrap': nowrap,
+    '-wrap': wrap,
+    '-wrap-reverse': wrap-reverse
+  )
+);
+
+@each $property, $values in $flexValues {
+  @each $valueKey, $valueValue in $values {
+    .#{$property}#{$valueKey} {
+      @if $property == 'flex' {
+        display: $valueValue;
+      } @else if $property == 'wrap' {
+        flex-wrap: $valueValue;
+      } @else {
+        #{$property}: $valueValue;
+      }
+    }
   }
 }
 
-.confirm-button {
-  background-color: #f29716 !important;
-  color: white !important;
-  box-shadow: none !important;
+@for $i from 1 through 96 {
+  .w-#{$i} {
+    width: $i * 4px; // 1 represents 4 pixels
+  }
+}
+
+.w-100x {
+  width: 100%;
 }
