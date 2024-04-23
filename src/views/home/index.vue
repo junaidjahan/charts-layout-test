@@ -32,6 +32,10 @@ onMounted(async () => {
   margin-inline: 50px;
   padding: 20px;
 
+  @media screen and (min-width: 300px) and (max-width: 768px) {
+    margin-inline: 10px;
+  }
+
   .grid {
     display: grid;
     grid-gap: 20px;

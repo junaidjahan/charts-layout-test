@@ -9,6 +9,8 @@ export interface Series {
 export interface DynamicChart {
   chartType: string
   description: string
+  title: string
+  lastRefreshed: string
   series: Array<Series>
 }
 
