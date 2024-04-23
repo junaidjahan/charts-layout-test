@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { BaseInput } from "@/components/base"
 
+const model = defineModel()
 </script>
 
 <template>
@@ -10,7 +11,7 @@ import { BaseInput } from "@/components/base"
                 <h3>
                     Chart layout
                 </h3>
-                <BaseInput theme="transparent" placeholder="Search..." />
+                <BaseInput v-model="model" theme="transparent" placeholder="Search..." />
             </div>
         </div>
     </nav>

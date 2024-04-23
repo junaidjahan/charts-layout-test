@@ -7,6 +7,7 @@ export const useHome = () => {
 
   const chartsData: Ref<Array<Chart>> = ref([])
   const chartTypes: Array<string> = ['LineChart', 'BarChart', 'CandleStickChart']
+  const search: Ref<string> = ref('')
 
   const mapLineChartData = (chart: Chart) => {
     return Object.entries(chart?.['Time Series (Daily)']).map((entry: any) => {
@@ -46,11 +47,21 @@ export const useHome = () => {
 
   const plotChart = computed<Array<DynamicChart>>(() => {
     return chartsData.value
+      ?.filter((chart) => {
+        if (search.value.length) {
+          return chart?.['Meta Data']['2. Symbol']
+            .toLowerCase()
+            .includes(search.value.toLowerCase())
+        }
+        return chart
+      })
       ?.map((chart): Array<DynamicChart> => {
         return chartTypes?.map((type: any) => {
           return {
             chartType: type,
-            description: 'This is description',
+            description: chart['Meta Data']['1. Information'],
+            title: chart['Meta Data']['2. Symbol'],
+            lastRefreshed: chart['Meta Data']['3. Last Refreshed'],
             series: [
               {
                 name: chart?.['Meta Data']?.['2. Symbol'],
@@ -79,13 +90,14 @@ export const useHome = () => {
             'Time Series (Daily)' in res.value
           )
         })
-        ?.map((res: PromiseSettledResult<Chart>) => res?.status && res.value)
+        ?.map((res: PromiseSettledResult<Chart> | any) => res?.status && res.value)
     } catch (error) {
       console.error('Error', error)
     }
   }
 
   return {
+    search,
     plotChart,
     fetchChartsData
   }
