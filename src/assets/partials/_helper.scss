@@ -1,0 +1,45 @@
+@for $i from 1 through 96 {
+  .w-#{$i} {
+    width: $i * 4px; // 1 represents 4 pixels
+  }
+}
+
+@each $mr, $ps in ('t': 'top', 'b': 'bottom', 'r': 'right', 'l': 'left') {
+  $mar: 0;
+  @while $mar<=100 {
+    .m#{$mr}-#{$mar} {
+      margin-#{$ps}: $mar * 1px !important;
+    }
+
+    $mar: $mar + 1;
+  }
+}
+
+@each $pa, $ps in ('t': 'top', 'b': 'bottom', 'r': 'right', 'l': 'left') {
+  $pad: 0;
+  @while $pad<=100 {
+    .p#{$pa}-#{$pad} {
+      padding-#{$ps}: $pad * 1px !important;
+    }
+
+    $pad: $pad + 1;
+  }
+}
+
+.shadow-smooth {
+  .v-card {
+    box-shadow:
+      0px 0.3px 1.8px -7px rgba(0, 0, 0, 0.02),
+      0px 0.8px 4.3px -7px rgba(0, 0, 0, 0.028),
+      0px 1.5px 8.1px -7px rgba(0, 0, 0, 0.035),
+      0px 2.7px 14.5px -7px rgba(0, 0, 0, 0.042),
+      0px 5px 27.2px -7px rgba(0, 0, 0, 0.05),
+      0px 12px 65px -7px rgba(0, 0, 0, 0.07);
+  }
+}
+
+.confirm-button {
+  background-color: #f29716 !important;
+  color: white !important;
+  box-shadow: none !important;
+}
